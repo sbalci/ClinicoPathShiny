@@ -15,7 +15,6 @@ suppressPackageStartupMessages({
   library("shinyBS")
   library("shinyLP")
   library("shinythemes")
-  # library("shinyPivot")
 })
 
 # Shiny Options ----
@@ -110,7 +109,7 @@ ui <- navbarPage(
 
   tabPanel("Brief Summary", brief_summary_ui("brief_summary_ns")),
   tabPanel("Age Pyramid", age_pyramid_ui("age_pyramid_ns", H_column_names_reactive)),
-  tabPanel("Interrater Agreement", agreement_ui("agreement_ns", H_column_names_reactive))
+  tabPanel("Interrater Agreement", agreement_ui("agreement_ns", H_column_names_reactive)),
   # Module tabs will be inserted here by the server
   # Commenting out other main tabs for now to focus on module structure
 
@@ -418,6 +417,7 @@ ui <- navbarPage(
   # )
   # NULL # Removed NULL as new tabs are present.
 
+  )
 
 
 
