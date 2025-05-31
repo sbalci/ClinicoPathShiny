@@ -1,6 +1,12 @@
 age_pyramid_server <- function(id, H_loaded_data, H_column_names_reactive_arg) {
   moduleServer(id, function(input, output, session) {
 
+    observe({
+      column_choices <- H_column_names_reactive_arg()
+      updateSelectInput(session, "age_var", choices = column_choices, selected = column_choices[1])
+      updateSelectInput(session, "gender_var", choices = column_choices, selected = column_choices[2])
+    })
+
     # Update choices for 'female_level' based on selected gender_var
     observe({
       req(H_loaded_data(), input$gender_var)

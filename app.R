@@ -108,8 +108,9 @@ ui <- navbarPage(
   ),
 
   tabPanel("Brief Summary", brief_summary_ui("brief_summary_ns")),
-  tabPanel("Age Pyramid", age_pyramid_ui("age_pyramid_ns", H_column_names_reactive)),
-  tabPanel("Interrater Agreement", agreement_ui("agreement_ns", H_column_names_reactive)),
+  tabPanel("Age Pyramid", age_pyramid_ui("age_pyramid_ns")),
+  tabPanel("Interrater Agreement", agreement_ui("agreement_ns"))
+
   # Module tabs will be inserted here by the server
   # Commenting out other main tabs for now to focus on module structure
 
@@ -416,8 +417,8 @@ ui <- navbarPage(
   #   source(file.path("ui", "ui_aboutPage_ref_analy.R"), local = TRUE)$value
   # )
   # NULL # Removed NULL as new tabs are present.
+)
 
-  )
 
 
 

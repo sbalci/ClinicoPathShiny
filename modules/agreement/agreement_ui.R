@@ -1,11 +1,12 @@
-agreement_ui <- function(id, H_column_names_reactive_arg) { # Argument renamed for clarity
+agreement_ui <- function(id) {
+
   ns <- NS(id)
   tagList(
     titlePanel("Interrater Reliability Analysis"),
     sidebarLayout(
       sidebarPanel(
         selectInput(ns("vars"), "Variables (select 2 or more rater columns)",
-                    choices = H_column_names_reactive_arg(),
+                    choices = NULL,
                     multiple = TRUE),
         hr(),
         h4("Cohen's Kappa / Fleiss' Kappa Options"),

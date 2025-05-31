@@ -1,6 +1,11 @@
 agreement_server <- function(id, H_loaded_data, H_column_names_reactive_arg) {
   moduleServer(id, function(input, output, session) {
 
+    observe({
+      column_choices <- H_column_names_reactive_arg()
+      updateSelectInput(session, "vars", choices = column_choices)
+    })
+
     agreement_instance_reactive <- reactive({
       req(H_loaded_data(), input$vars, length(input$vars) >= 2)
 
