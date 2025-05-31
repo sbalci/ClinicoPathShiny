@@ -1,4 +1,5 @@
 age_pyramid_ui <- function(id) {
+
   ns <- NS(id)
   tagList(
     titlePanel("Age Pyramid Analysis"),

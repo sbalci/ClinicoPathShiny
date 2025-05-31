@@ -15,7 +15,6 @@ suppressPackageStartupMessages({
   library("shinyBS")
   library("shinyLP")
   library("shinythemes")
-  # library("shinyPivot")
 })
 
 # Shiny Options ----
@@ -35,6 +34,7 @@ H_column_names_reactive <- reactive({
 # server0_data.R loads the initial 'mydata.xlsx' into 'mydata' and 'exampleData'.
 # These are then used by server_reactiveValues.R (for testdata()) and ultimately server_observe.R.
 source(file.path("server", "server0_data.R"), local = TRUE)
+
 
 
 # UI ----
@@ -110,6 +110,7 @@ ui <- navbarPage(
   tabPanel("Brief Summary", brief_summary_ui("brief_summary_ns")),
   tabPanel("Age Pyramid", age_pyramid_ui("age_pyramid_ns")),
   tabPanel("Interrater Agreement", agreement_ui("agreement_ns"))
+
   # Module tabs will be inserted here by the server
   # Commenting out other main tabs for now to focus on module structure
 
