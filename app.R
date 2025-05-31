@@ -34,7 +34,8 @@ H_column_names_reactive <- reactive({
 # Data ----
 # server0_data.R loads the initial 'mydata.xlsx' into 'mydata' and 'exampleData'.
 # These are then used by server_reactiveValues.R (for testdata()) and ultimately server_observe.R.
-source(file.path("server", "server0_data.R"), local = TRUE)$value
+source(file.path("server", "server0_data.R"), local = TRUE)
+
 
 
 # UI ----
@@ -415,8 +416,7 @@ ui <- navbarPage(
   #   ## Page 7c: References for Analysis ----
   #   source(file.path("ui", "ui_aboutPage_ref_analy.R"), local = TRUE)$value
   # )
-  NULL # Added NULL here as navbarPage expects arguments.
-)
+  # NULL # Removed NULL as new tabs are present.
 
 
 
