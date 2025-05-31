@@ -69,15 +69,15 @@ ui <- navbarPage(
             "Test Data",
             "Upload CSV",
             "Upload Excel",
-            "Upload SPSS",
-            "Upload General"
+            "Upload SPSS"
+            # "Upload General"
           ),
           choiceValues = c(
             "testdata_ui",
             "csv_ui",
             "excel_ui",
-            "spss_ui",
-            "general_ui"
+            "spss_ui"
+            # "general_ui"
           )
         )
       ),
@@ -86,8 +86,8 @@ ui <- navbarPage(
         uiOutput("test_ui"),
         uiOutput("upload_csv_ui"),
         uiOutput("upload_excel_ui"),
-        uiOutput("upload_spss_ui"),
-        uiOutput("upload_general_ui")
+        uiOutput("upload_spss_ui")
+        # uiOutput("upload_general_ui")
       )
     ))
   ),

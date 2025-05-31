@@ -4,10 +4,10 @@
 uploaded_csv_data <- reactive({
   req(input$uploaded_csv_file)
   
-  readr::read_csv2(
+  readr::read_delim(
     file = input$uploaded_csv_file$datapath,
-    # header = input$header,
-    # sep = input$sep,
+    delim = input$sep, # Changed sep to delim
+    col_names = input$header, # Changed header to col_names
     quote = input$quote,
     na = c("NA", "NaN", "")
   )
