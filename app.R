@@ -37,6 +37,7 @@ H_column_names_reactive <- reactive({
 source(file.path("server", "server0_data.R"), local = TRUE)
 
 
+
 # UI ----
 source(file.path("modules", "brief_summary", "brief_summary_ui.R"), local = TRUE)
 source(file.path("modules", "age_pyramid", "age_pyramid_ui.R"), local = TRUE)
@@ -416,7 +417,6 @@ ui <- navbarPage(
   #   source(file.path("ui", "ui_aboutPage_ref_analy.R"), local = TRUE)$value
   # )
   # NULL # Removed NULL as new tabs are present.
-)
 
 
 
