@@ -8,7 +8,7 @@ fluidRow(column(
   )
 ),
 column(
-  6, panel_div("danger", "Last Update", "16.12.2019")
+  6, panel_div("danger", "Last Update", "19.07.2024")
   
   
 ))
