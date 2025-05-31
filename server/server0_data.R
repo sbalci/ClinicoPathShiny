@@ -1,5 +1,5 @@
 # Use this path for electron build:
-mydata <- readxl::read_xlsx("mydata.xlsx")
+mydata <- readxl::read_excel(path = here::here("mydata.xlsx"), na = c("", "NA"))
 
 # mydata <- readxl::read_excel(path = here::here("mydata.xlsx"), na = c("", "NA"))
 

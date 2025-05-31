@@ -16,29 +16,56 @@ observeEvent(input$spss_Button, {
   button_val(new_val)
 })
 
+# Assuming a CSV button sets button_val to "csv"
+# If server_csv_ui.R or similar handles this, this might not be needed here.
+# For now, adding it for completeness of button_val logic.
+observeEvent(input$csv_Button, {
+  button_val("csv")
+})
+
 
 output$value55 <- renderText({
   button_val()
 })
 
 
-read_data <- reactiveVal()
+read_data <- reactiveVal() # This is the old reactiveVal
 
 observe({
+  current_button_val <- button_val()
+  data_to_load <- NULL
 
-  button <- button_val()
+  # Need to ensure uploaded_csv_data, uploaded_excel_data, etc. are available
+  # These are defined in server_read_data.R, which is sourced in app.R's server function
+  # testdata() is from server_reactiveValues.R (ultimately from server0_data.R)
 
-  if (button == "excel") {
+  if (current_button_val == "test" || current_button_val == "init") {
+    # Assuming testdata() is reactive and available here, ultimately providing exampleData
+    # exampleData is loaded in app.R's global scope via server0_data.R initially.
+    # For H_main_data, we should use the actual exampleData if "test" is chosen.
+    # server0_data.R (sourced at app startup) creates 'mydata' and 'exampleData'
+    # server_reactiveValues.R creates testdata() reactive which is 'mydata'
+    # So testdata() here should be exampleData or mydata.
+    # The subtask: H_main_data(exampleData) for test data.
+    # If testdata() directly returns exampleData, this is fine.
+    # Let's assume testdata() is the correct reactive for the example dataset.
+    data_to_load <- tryCatch(testdata(), error = function(e) NULL)
+  } else if (current_button_val == "csv") {
+    data_to_load <- tryCatch(uploaded_csv_data(), error = function(e) NULL)
+  } else if (current_button_val == "excel") {
+    data_to_load <- tryCatch(uploaded_excel_data(), error = function(e) NULL)
+  } else if (current_button_val == "sav") {
+    data_to_load <- tryCatch(uploaded_spss_data(), error = function(e) NULL)
+  }
 
-    read_data(uploaded_excel_data())
-
-    # } else if (button == "sav") {
-    #
-    #   read_data(uploaded_spss_data())
-
-      } else if (button == "test" | button == "init") {
-
-        read_data(testdata())
+  if (!is.null(data_to_load)) {
+    read_data(data_to_load)    # Update old reactiveVal for compatibility if needed
+    H_main_data(data_to_load)  # Update new global reactiveVal
+  } else if (current_button_val != "init") {
+    # Avoid clearing H_main_data on init if nothing is loaded yet,
+    # but if a button was pressed and data_to_load is still NULL (e.g. from tryCatch error),
+    # then clear H_main_data.
+    H_main_data(NULL) # Clear if a specific load attempt failed or was not covered
   }
 })
 
