@@ -7,7 +7,8 @@ output$upload_spss_ui <- renderUI({
   if (input$select_data_ui == "spss_ui")
     
     
-    wellPanel(
+    wellPanel(p("Work in progress SPSS"),
+              
               fileInput(
                 inputId = "uploaded_spss_file",
                 label =  "Upload your own SPSS File",

@@ -176,7 +176,7 @@ output$CoxTable <-
     
     
     mydata %>%
-      finalfit::finalfit("Surv(OverallTime, Outcome)", input$survfactor)
+      finalfit::finalfit("Surv(OverallTime, Outcome)", input$Factor)
     
   })
 
@@ -194,7 +194,7 @@ output$Median <-
     
     
     formula_text <-
-      paste0("Surv(OverallTime, Outcome) ~ ", input$survfactor)
+      paste0("Surv(OverallTime, Outcome) ~ ", input$Factor)
     
     km_fit <- survfit(as.formula(formula_text),
                       data = mydata)
@@ -221,7 +221,7 @@ output$YearSurv <-
     
     
     formula_text <-
-      paste0("Surv(OverallTime, Outcome) ~ ", input$survfactor)
+      paste0("Surv(OverallTime, Outcome) ~ ", input$Factor)
     
     km_fit <- survfit(as.formula(formula_text),
                       data = mydata)
@@ -257,7 +257,7 @@ output$YearSurvComment <-
     
     
     formula_text <-
-      paste0("Surv(OverallTime, Outcome) ~ ", input$survfactor)
+      paste0("Surv(OverallTime, Outcome) ~ ", input$Factor)
     
     km_fit <- survfit(as.formula(formula_text),
                       data = mydata)
